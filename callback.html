@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TikTok Auth Bridge</title>
+</head>
+<body style="font-family: sans-serif; max-width: 480px; margin: 60px auto; text-align: center;">
+<p>Redirecting back to the local script...</p>
+<script>
+  // TikTok's Web Login Kit requires an https:// redirect_uri, but the actual
+  // OAuth exchange happens in a local Node script (npm run tiktok:auth)
+  // listening on localhost. This static page is just a bridge: forward the
+  // code/state/error query params TikTok appended here straight on to the
+  // local listener, unchanged.
+  window.location.replace("http://localhost:8722/callback" + window.location.search);
+</script>
+<noscript>JavaScript is required to complete TikTok authorization.</noscript>
+</body>
+</html>
